@@ -7,7 +7,8 @@ const dmSans = DM_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Munch",
-  description: "Munch is the ultimate food app",
+  description:
+    "Connect over food. Discover the best halal restaurants and share with your friends. Coming soon for London.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
