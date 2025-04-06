@@ -44,7 +44,7 @@ export default function EmailForm() {
   };
   return (
     <>
-      <form onSubmit={handleSubmit} method="POST" className="mt-2 max-w-sm">
+      <form onSubmit={handleSubmit} method="POST" className="mt-2 md:max-w-sm">
         <div className="flex flex-col gap-2">
           <label className="sr-only" htmlFor="name">
             Name
@@ -77,7 +77,7 @@ export default function EmailForm() {
             onChange={handleEmailChange}
           />
           <button
-            className="flex h-10 shrink-0 items-center justify-center gap-1 rounded-lg bg-orange-500 px-4 py-2 text-sm font-semibold text-white transition-all hover:bg-orange-700"
+            className="flex h-10 shrink-0 items-center justify-center gap-1 rounded-lg bg-emerald-500 px-4 py-2 text-sm font-semibold text-white transition-all hover:bg-emerald-700"
             type="submit"
           >
             <span>I'm interested!</span>
@@ -85,13 +85,13 @@ export default function EmailForm() {
         </div>
       </form>
 
-      <div className="flex items-start gap-2 text-gray-500">
+      {/* <div className="flex items-start gap-2 text-gray-500">
         <InfoCircledIcon />
         <p className="text-xs -mt-[0.5] max-w-sm">
           No worries! your data is completely safe and will only be utilised to provide you with updates about our
           product.
         </p>
-      </div>
+      </div> */}
     </>
   );
 }
