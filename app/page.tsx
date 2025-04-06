@@ -13,7 +13,7 @@ export default function Home() {
             src="/app-mockup.png"
             alt="Munch Mobile App"
             fill
-            className="object-contain px-14 pt-10 object-bottom"
+            className="object-contain px-4 md:px-14 pt-10 object-bottom"
           />
         </div>
 
@@ -21,10 +21,10 @@ export default function Home() {
           <p className="p-2 border-gray-300 border-2 rounded-full font-medium text-gray-400 w-60 text-center text-sm">
             🚀 COMING SOON FOR LONDON
           </p>
-          <h1 className="font-semibold tracking-tight text-zinc-900 text-2xl leading-tight md:text-3xl max-w-lg">
+          <h1 className="font-semibold tracking-tight text-zinc-900 text-2xl leading-tight md:text-4xl max-w-lg">
             {/* <span className="text-red-500">Find</span> + <span className="text-purple-500">share</span> the best{" "}
             <span className="text-emerald-500">حلال</span> restaurants in London */}
-            🔎 <span>Discover</span> the best حلال restaurants.
+            🔎 <span>Discover</span> great حلال restaurants.
             <br />
             🌐 <span>Share</span> with your friends.
           </h1>
