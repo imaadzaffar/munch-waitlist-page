@@ -1,7 +1,13 @@
 "use client";
 import { InfoCircledIcon } from "@radix-ui/react-icons";
+import { createClient } from "@supabase/supabase-js";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
+
+const supabase = createClient(
+  "https://tdvlgijqbwsgoyzfdkma.supabase.co",
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRkdmxnaWpxYndzZ295emZka21hIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDE1NzA0MjUsImV4cCI6MjA1NzE0NjQyNX0.P5eXqXLpuxIuUSLBBZYtsnRNRTrjxl2Hr9qJSdr5FW8"
+);
 
 export default function EmailForm() {
   const [name, setName] = useState<string>();
@@ -18,30 +24,22 @@ export default function EmailForm() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    try {
-      const response = await fetch("/api/submit", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ name, email }),
-      });
+    console.log(name, email);
 
-      if (response.ok) {
-        setName("");
-        setEmail("");
-        toast.success("Thank you for joining our waitlist! 🚀");
-      } else {
-        setName("");
-        setEmail("");
-        toast.error("Oops! Something went wrong!");
-      }
-    } catch (err) {
+    const { data, error } = await supabase.from("waitlist").insert([{ name, email }]);
+
+    if (!error) {
       setName("");
       setEmail("");
-      console.error(err);
+      toast.success("Thank you for joining our waitlist! 🚀");
+    } else {
+      setName("");
+      setEmail("");
+      console.error(error);
+      toast.error("Oops! Something went wrong!");
     }
   };
+
   return (
     <>
       <form onSubmit={handleSubmit} method="POST" className="mt-2 md:max-w-sm">
@@ -52,12 +50,11 @@ export default function EmailForm() {
           <input
             autoComplete="name"
             className="text-accent-500 block h-10 w-full focus:invalid:border-red-400 focus:invalid:text-red-500 focus:invalid:ring-red-500 appearance-none rounded-lg border-2 border-slate-300 px-4 py-2 placeholder-zinc-400 duration-200 focus:outline-none focus:ring-zinc-300 sm:text-sm"
-            pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
             id="name"
             name="name"
             placeholder="John Doe"
             required
-            type="name"
+            type="text"
             value={name}
             onChange={handleNameChange}
           />
