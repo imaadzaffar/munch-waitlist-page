@@ -24,9 +24,9 @@ export default function Home() {
           <h1 className="font-semibold tracking-tight text-zinc-900 text-2xl leading-tight md:text-4xl max-w-lg">
             {/* <span className="text-red-500">Find</span> + <span className="text-purple-500">share</span> the best{" "}
             <span className="text-emerald-500">حلال</span> restaurants in London */}
-            🔎 <span>Discover</span> great حلال restaurants.
+            🔎 <span>Discover</span> حلال restaurants.
             <br />
-            🌐 <span>Share</span> with your friends.
+            🌐 <span>Share</span> with friends.
           </h1>
           <p className="text-gray-500">Join the waitlist to get early access when our app is available!</p>
 
