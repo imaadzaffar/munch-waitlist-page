@@ -10,8 +10,9 @@ const supabase = createClient(
 );
 
 export default function EmailForm() {
-  const [name, setName] = useState<string>();
-  const [email, setEmail] = useState<string>();
+  const [name, setName] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [platform, setPlatform] = useState<string>("");
 
   const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value);
@@ -21,20 +22,26 @@ export default function EmailForm() {
     setEmail(e.target.value);
   };
 
+  const handlePlatformChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setPlatform(e.target.value);
+  };
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    console.log(name, email);
+    console.log(name, email, platform);
 
-    const { data, error } = await supabase.from("waitlist").insert([{ name, email }]);
+    const { data, error } = await supabase.from("waitlist").insert([{ name, email, platform }]);
 
     if (!error) {
       setName("");
       setEmail("");
+      setPlatform("");
       toast.success("Thank you for joining our waitlist! 🚀");
     } else {
       setName("");
       setEmail("");
+      setPlatform("");
       console.error(error);
       toast.error("Oops! Something went wrong!");
     }
@@ -73,6 +80,25 @@ export default function EmailForm() {
             value={email}
             onChange={handleEmailChange}
           />
+
+          <label className="sr-only" htmlFor="platform">
+            Platform
+          </label>
+          <select
+            id="platform"
+            name="platform"
+            className="text-accent-500 block h-10 w-full appearance-none rounded-lg border-2 border-slate-300 px-4 py-2 placeholder-zinc-400 duration-200 focus:outline-none focus:ring-zinc-300 sm:text-sm"
+            value={platform}
+            onChange={handlePlatformChange}
+            required
+          >
+            <option value="" disabled selected>
+              Select platform
+            </option>
+            <option value="android">Android</option>
+            <option value="ios">iOS</option>
+          </select>
+
           <button
             className="flex h-10 shrink-0 items-center justify-center gap-1 rounded-lg bg-green-900 px-4 py-2 text-sm font-semibold text-white transition-all hover:bg-green-950"
             type="submit"
