@@ -33,7 +33,7 @@ export default function Home() {
 
         <main className="flex flex-col gap-4 md:gap-8 mt-4 md:justify-center px-6 pb-10">
           <p className="p-2 border-gray-300 border-2 rounded-full font-medium text-gray-400 w-60 text-center text-sm">
-            🚀 COMING SOON FOR LONDON
+            🚀 APP COMING SOON
           </p>
           <h1 className="font-semibold tracking-tight text-zinc-900 text-2xl leading-tight md:text-4xl max-w-lg">
             <div className="flex items-center gap-2">
